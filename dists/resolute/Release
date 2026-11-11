@@ -1,0 +1,31 @@
+Architectures: amd64 all
+Codename: resolute
+Components: main
+Date: Tue, 10 Nov 2026 04:55:10 +0000
+Label: iNTEGRA OS
+Origin: iNTEGRA
+Suite: resolute
+MD5Sum:
+ e33d3845a4fbbbfe2d041b83f97a0806              149 Release
+ 2dedf201277d4e9cf594fed5d19b4ecb             7228 main/binary-all/Packages
+ 5e0bf7c8305ed234be88482459b08157             3267 main/binary-all/Packages.gz
+ 2dedf201277d4e9cf594fed5d19b4ecb             7228 main/binary-amd64/Packages
+ 5e0bf7c8305ed234be88482459b08157             3267 main/binary-amd64/Packages.gz
+SHA1:
+ 705877d82fd5d24d55cf7233ef9581507cc4d29a              149 Release
+ e56e4501b6a7a59ac90c5211e35ef3ddd8da5a84             7228 main/binary-all/Packages
+ 74206a153657074ee3d3848755c41f1fd1b7aee9             3267 main/binary-all/Packages.gz
+ e56e4501b6a7a59ac90c5211e35ef3ddd8da5a84             7228 main/binary-amd64/Packages
+ 74206a153657074ee3d3848755c41f1fd1b7aee9             3267 main/binary-amd64/Packages.gz
+SHA256:
+ b1c699f09633f424e8ece6da27d53110b842107db050304df704510e651cecd4              149 Release
+ 035b272aaac22ac62367d92fb776d22833edb1a220a43c9cd40fd255e472ac49             7228 main/binary-all/Packages
+ a0eb9fc80855de42eb9d202d2dceda528e1c9ac0d73a260c04736a48baa74355             3267 main/binary-all/Packages.gz
+ 035b272aaac22ac62367d92fb776d22833edb1a220a43c9cd40fd255e472ac49             7228 main/binary-amd64/Packages
+ a0eb9fc80855de42eb9d202d2dceda528e1c9ac0d73a260c04736a48baa74355             3267 main/binary-amd64/Packages.gz
+SHA512:
+ 6db2f1a64b07b9d13783e72cb758ad2b1f9e503a25be47fff78f0352509628510597f5b34394324e3e99428975514210e8c84ee850f4d96ec634c68d9aec101f              149 Release
+ a938a8ababa0d203500567cd69e094c68b0a774b4297edf3e8d401956132e5613600f333e85f98e80e09a554c050d85591ef8aea8748fadb549067a73144e603             7228 main/binary-all/Packages
+ d127441d9900ab3c227200cf9f225b35456224683a1fd42f41e808072f6ca7fe0b562c7798d29991626a60b324d375fd7dc76fbc9572c7a7057b6583b8215a25             3267 main/binary-all/Packages.gz
+ a938a8ababa0d203500567cd69e094c68b0a774b4297edf3e8d401956132e5613600f333e85f98e80e09a554c050d85591ef8aea8748fadb549067a73144e603             7228 main/binary-amd64/Packages
+ d127441d9900ab3c227200cf9f225b35456224683a1fd42f41e808072f6ca7fe0b562c7798d29991626a60b324d375fd7dc76fbc9572c7a7057b6583b8215a25             3267 main/binary-amd64/Packages.gz
