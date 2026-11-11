@@ -1,31 +1,31 @@
 Architectures: amd64 all
 Codename: resolute
 Components: main
-Date: Tue, 10 Nov 2026 04:55:10 +0000
+Date: Wed, 11 Nov 2026 04:21:10 +0000
 Label: iNTEGRA OS
 Origin: iNTEGRA
 Suite: resolute
 MD5Sum:
- e33d3845a4fbbbfe2d041b83f97a0806              149 Release
- 2dedf201277d4e9cf594fed5d19b4ecb             7228 main/binary-all/Packages
- 5e0bf7c8305ed234be88482459b08157             3267 main/binary-all/Packages.gz
- 2dedf201277d4e9cf594fed5d19b4ecb             7228 main/binary-amd64/Packages
- 5e0bf7c8305ed234be88482459b08157             3267 main/binary-amd64/Packages.gz
+ 78d51192d528aafc25e759815b6f40f1              149 Release
+ 93b37ed98fb50568ad5edcdc4737a996             7228 main/binary-all/Packages
+ 8c417a788435b91eb9be3511b5926614             3271 main/binary-all/Packages.gz
+ 93b37ed98fb50568ad5edcdc4737a996             7228 main/binary-amd64/Packages
+ 8c417a788435b91eb9be3511b5926614             3271 main/binary-amd64/Packages.gz
 SHA1:
- 705877d82fd5d24d55cf7233ef9581507cc4d29a              149 Release
- e56e4501b6a7a59ac90c5211e35ef3ddd8da5a84             7228 main/binary-all/Packages
- 74206a153657074ee3d3848755c41f1fd1b7aee9             3267 main/binary-all/Packages.gz
- e56e4501b6a7a59ac90c5211e35ef3ddd8da5a84             7228 main/binary-amd64/Packages
- 74206a153657074ee3d3848755c41f1fd1b7aee9             3267 main/binary-amd64/Packages.gz
+ 73242ea8a99d41f5b3cc20142b824a5dd314afd0              149 Release
+ 8ef0d801c94f5a29422a5ce702be09b8ecdd989a             7228 main/binary-all/Packages
+ 72c22e188180725ad50173806d5e7ed6fbaaf6f3             3271 main/binary-all/Packages.gz
+ 8ef0d801c94f5a29422a5ce702be09b8ecdd989a             7228 main/binary-amd64/Packages
+ 72c22e188180725ad50173806d5e7ed6fbaaf6f3             3271 main/binary-amd64/Packages.gz
 SHA256:
- b1c699f09633f424e8ece6da27d53110b842107db050304df704510e651cecd4              149 Release
- 035b272aaac22ac62367d92fb776d22833edb1a220a43c9cd40fd255e472ac49             7228 main/binary-all/Packages
- a0eb9fc80855de42eb9d202d2dceda528e1c9ac0d73a260c04736a48baa74355             3267 main/binary-all/Packages.gz
- 035b272aaac22ac62367d92fb776d22833edb1a220a43c9cd40fd255e472ac49             7228 main/binary-amd64/Packages
- a0eb9fc80855de42eb9d202d2dceda528e1c9ac0d73a260c04736a48baa74355             3267 main/binary-amd64/Packages.gz
+ d811e42a2a6a386e610781d62fcdce3b661d19717443b7782921147210b60f6f              149 Release
+ beac7177624a817b813228daa9e2dd8e4cbbb9702e394c0250e5bcef26c136d6             7228 main/binary-all/Packages
+ 7e216263307fb639d0d176342ebca0ca118e2f3059366baaef051f4fa94a1bec             3271 main/binary-all/Packages.gz
+ beac7177624a817b813228daa9e2dd8e4cbbb9702e394c0250e5bcef26c136d6             7228 main/binary-amd64/Packages
+ 7e216263307fb639d0d176342ebca0ca118e2f3059366baaef051f4fa94a1bec             3271 main/binary-amd64/Packages.gz
 SHA512:
- 6db2f1a64b07b9d13783e72cb758ad2b1f9e503a25be47fff78f0352509628510597f5b34394324e3e99428975514210e8c84ee850f4d96ec634c68d9aec101f              149 Release
- a938a8ababa0d203500567cd69e094c68b0a774b4297edf3e8d401956132e5613600f333e85f98e80e09a554c050d85591ef8aea8748fadb549067a73144e603             7228 main/binary-all/Packages
- d127441d9900ab3c227200cf9f225b35456224683a1fd42f41e808072f6ca7fe0b562c7798d29991626a60b324d375fd7dc76fbc9572c7a7057b6583b8215a25             3267 main/binary-all/Packages.gz
- a938a8ababa0d203500567cd69e094c68b0a774b4297edf3e8d401956132e5613600f333e85f98e80e09a554c050d85591ef8aea8748fadb549067a73144e603             7228 main/binary-amd64/Packages
- d127441d9900ab3c227200cf9f225b35456224683a1fd42f41e808072f6ca7fe0b562c7798d29991626a60b324d375fd7dc76fbc9572c7a7057b6583b8215a25             3267 main/binary-amd64/Packages.gz
+ 3a0074f1e95dbfee270e9cfe4f65bc43df9dd1a534373c778bcf1ff5b4681c03b1d337266d832905bb879264e8780131e020a514710c9e481d1626e8f956fef6              149 Release
+ 7b8ecf651b8a4a0558fbe7efc111e2b4418f9049d7c4eb34f946a32d4b6bdbbddd63891550e77fbe535339363d1c800745f09f44846cf307828c25040c05ff49             7228 main/binary-all/Packages
+ 9f6999af34c843dc7ac266906d120afc4acbdf9d3d6732106b025acea5a445b2afcb4ce294858daa500e250a37debf7746290a3880b087279c3918460987c687             3271 main/binary-all/Packages.gz
+ 7b8ecf651b8a4a0558fbe7efc111e2b4418f9049d7c4eb34f946a32d4b6bdbbddd63891550e77fbe535339363d1c800745f09f44846cf307828c25040c05ff49             7228 main/binary-amd64/Packages
+ 9f6999af34c843dc7ac266906d120afc4acbdf9d3d6732106b025acea5a445b2afcb4ce294858daa500e250a37debf7746290a3880b087279c3918460987c687             3271 main/binary-amd64/Packages.gz

@@ -1,66 +1,66 @@
 Package: integra-central
 Architecture: all
-Version: 0.5~teste
+Version: 0.6~teste
 Priority: optional
 Section: admin
 Maintainer: Projeto iNTEGRA <integra@localhost>
 Depends: python3, python3-pyqt6, pciutils, usbutils, ubuntu-drivers-common, policykit-1 | polkitd, plasma-systemmonitor, partitionmanager, plasma-firewall, ufw, timeshift, libglib2.0-bin
-Filename: pool/main/integra-central_0.5~teste_all.deb
-Size: 12104
-MD5sum: 2b11ea5832ea5e2611b467cd2c4285dc
-SHA1: 2cd9124439c812630fb42ca7028e5f346f2a21eb
-SHA256: ecb123b9a36a550ebd0927c05c9d63f88952d4edbe60c8a5048d7e499da2c437
-SHA512: 3f2844bb6bd98baef3947289b3cb61e3475aa04fcb095c2cb1560e799a21837654cb19ea6618c6ff8818bf92eab671d5cca3306085afac048d549daa5539da2b
+Filename: pool/main/integra-central_0.6~teste_all.deb
+Size: 12096
+MD5sum: f2b6e009e99490c9d638257681707672
+SHA1: fc65d68b75781a6cd4533e3822e9af88395196d2
+SHA256: 905b8aa7ccb2669c0ec3edd084e4a37702cff13673454001049947c124081316
+SHA512: 2b2b050b1edb1951aebcc888b61f1e57f47c31178f4aa665a9509a76c7dcab000e1f4a540dc85dbc75e88833645565ab99f37167e2df0b5864e5558a4f0d8ecd
 Description: Central iNTEGRA: gerenciadores do sistema num só lugar
  Visão geral, dispositivos e drivers, programas do Windows e atalhos para
  os gerenciadores do Plasma.
 
 Package: integra-desktop
 Architecture: all
-Version: 0.5~teste
+Version: 0.6~teste
 Priority: optional
 Section: metapackages
 Maintainer: Projeto iNTEGRA <integra@localhost>
-Depends: integra-marca (= 0.5~teste), integra-central (= 0.5~teste), integra-windows (= 0.5~teste), integra-restauracao (= 0.5~teste), integra-google-drive (= 0.5~teste), integra-logos, zapzap
-Filename: pool/main/integra-desktop_0.5~teste_all.deb
+Depends: integra-marca (= 0.6~teste), integra-central (= 0.6~teste), integra-windows (= 0.6~teste), integra-restauracao (= 0.6~teste), integra-google-drive (= 0.6~teste), integra-logos, zapzap
+Filename: pool/main/integra-desktop_0.6~teste_all.deb
 Size: 812
-MD5sum: c53c1bb8daa09d0a88a3bbc4f79d41b9
-SHA1: f827fb568ab19d05ae19f33dd1614842584c887a
-SHA256: 71b0658bca2bf351334e9a99725f16f6760ac6c9f7a262a7002b061ca50608cd
-SHA512: 365671e6e78e575d1f5079dda56de628641ea016549735c4f80b6b9004b56215be632f4818f283b6dc4659ac77675381d1079d4cd582a65e47bfdf8fb93c94c2
+MD5sum: 8dc8a931925f2996943853f513198e71
+SHA1: abb72c84314ba81e986e30c5883e374d5b5eda78
+SHA256: 1ce8889836495825442044ce4f7e69704585d49f0fc087f041741a9a2971e6c8
+SHA512: 88d6ac99751b441c7da2d49306d6c5aa08c8d61a332eb630909ca263ebcb66ea404119b250e5580c764c1e3bb9fab33000704d5a66ac8c86a2b4b8e2db5e5ace
 Description: iNTEGRA OS: todos os componentes
  Metapacote que instala a camada iNTEGRA completa.
 
 Package: integra-euro-office
 Architecture: all
-Version: 0.5~teste
+Version: 0.6~teste
 Priority: optional
 Section: editors
 Maintainer: Projeto iNTEGRA <integra@localhost>
 Depends: euro-office-euro-office
 Replaces: integra-marca (<< 0.6~)
-Filename: pool/main/integra-euro-office_0.5~teste_all.deb
+Filename: pool/main/integra-euro-office_0.6~teste_all.deb
 Size: 1588
-MD5sum: ac96d09a070d38a07c86c782e8f7eaa4
-SHA1: 6f636401a8fc460346dadb11d479a709b8e9d30c
-SHA256: a3150af2e4ce145edeeb777a7d989fb715979f76955839139317e53e1401c399
-SHA512: b1dda2068b9a77fd4cecba6d699ffc2df9b8af7d2274ff6e48ebd3476921aa8df77e579b1191b8a96071030cd8f5e107e4484bbe6f6438ef6c73d960b1249c76
+MD5sum: 551e5b06c45c70190c651c31e96776c2
+SHA1: dc9a6c18fd0c0d26fee3137bba91329cb8160d67
+SHA256: 32d62e3856898234a14f3505d356efcc5d0adca3adcc8739db0ddfc97ca8b21a
+SHA512: bfb092a4b69a3e720937730d7b98241f5f16c817f41a112bc0fb68a0f8cb6ea331ae80b64024276d9ae768aac6347eade0f701487e64ddf785306d3bfee1733a
 Description: Ajustes do iNTEGRA para o Euro-Office
  Abre o Euro-Office pela XWayland e em português (pt-BR) para contas novas.
 
 Package: integra-google-drive
 Architecture: all
-Version: 0.5~teste
+Version: 0.6~teste
 Priority: optional
 Section: net
 Maintainer: Projeto iNTEGRA <integra@localhost>
 Depends: python3, python3-pyqt6, rclone, fuse3, xdg-utils, systemd
-Filename: pool/main/integra-google-drive_0.5~teste_all.deb
+Filename: pool/main/integra-google-drive_0.6~teste_all.deb
 Size: 4884
-MD5sum: 799252ee55f94097283de267ab53cfe3
-SHA1: e77b83a33d2e4878ab8dd4021bc88bf1d7437984
-SHA256: 5aa83fce61f366547f2ed1ad8d6432b4969bf95c24faf65266a3278633ff0855
-SHA512: 9cb48066d4a797c2d035b2d4b63556f0d4712bc2ac7fa1b4ed3d79979e3ca8750a25dbed98c4a821f683068c535630968e6e371c0e463ec824bcd241d6e28cf8
+MD5sum: 2e898239d1213dae1491bcfc95ea4c6a
+SHA1: c00626ece6b2ff35728938ea234761d960f3fd83
+SHA256: 24daa15c179aa6e65b37e38c7bebe1c1c2015df3689aed6d2d1c2cec774706ea
+SHA512: e2abdba2c773ffe03b6c4580bbcfe2827e18c3f095d567616a2c7df059ada9f77557467315d3b893a0e0888c645e41d729a2a4776cfa83927e036cc036090832
 Description: Google Drive como pasta no iNTEGRA OS
  Assistente que conecta a conta Google pelo rclone e mostra o Drive como a
  pasta "Google Drive", montada por um serviço do systemd do usuário.
@@ -73,11 +73,11 @@ Section: misc
 Maintainer: Projeto iNTEGRA <integra@localhost>
 Depends: binutils, wget, winbind, 7zip, cabextract, xdg-utils, mesa-utils, libfuse2t64, libfuse3-4, fuse3
 Filename: pool/main/integra-logos_4.0.0~beta.15-1integra1_amd64.deb
-Size: 34995036
-MD5sum: 41b84a72d4e2fa11cba86f8e1b8cdb82
-SHA1: a475ca544639a4abf7ddebf11975a3ba7a50228a
-SHA256: 73668d452a03f320483b3744680d04fa258954d9ac56f29b818035f8b81e3ff2
-SHA512: 9378fcaca1ecbb51ec2243f1d38d283dcb9346020fcb62b221204be1764f550a9067f03299d86c930b89c743b050e20721c4e3600d9aa7811aab4cef20421cb4
+Size: 34995068
+MD5sum: bad2631762e6a6b75da05e8007008135
+SHA1: 61a402d3843581d4175a99357644817259665e3d
+SHA256: 72ed6739613b8f1d514f5c8c30537ba57fa30004e9ecf4d46769189f70cabe78
+SHA512: d0eea2fb17f179b98af73806925fd1ab2201493b76dcff9c52cae3330f0188aa02b2786783d15f36164c7986154f184dedd4cd195ca9880fc392bd7b2616aefe
 Homepage: https://github.com/FaithLife-Community/LogosLinuxInstaller
 Description: Logos Bible pelo Ou Dedetai (instalação no primeiro uso)
  Atalho "Logos Bible" que abre o Ou Dedetai, instalador livre da comunidade
@@ -86,51 +86,51 @@ Description: Logos Bible pelo Ou Dedetai (instalação no primeiro uso)
 
 Package: integra-marca
 Architecture: all
-Version: 0.5~teste
+Version: 0.6~teste
 Priority: optional
 Section: x11
 Maintainer: Projeto iNTEGRA <integra@localhost>
 Depends: base-files, plymouth, plymouth-label, kwin-style-aurorae, fonts-inter
-Filename: pool/main/integra-marca_0.5~teste_all.deb
-Size: 417236
-MD5sum: 80319089e243e9787817427133f2dd77
-SHA1: 7b2ec247549681cc2e7c4269787b19081ad574d8
-SHA256: 0b8689487d8505c33d40490a1e2a8f182edcc9e9a66145901e1079890d7d532e
-SHA512: 89cbeb7dbc6be6ce73350aee630344b8f330cd2a4ea0b306e6a82f118ff0d156c3675a8c4dac17c8acf1b6e0eb40b57661dfc67eece5b909b0d479f082db2f8e
+Filename: pool/main/integra-marca_0.6~teste_all.deb
+Size: 417232
+MD5sum: edb2f740f21bd8e1f9ad0d0c44543029
+SHA1: dbedc53fd54df6b400c93ebb11181b1c9e22ce8a
+SHA256: 6f83d79e0d2f81a9bf1660cfeee2c4d1ed4c567a07efd31cd92a4c9da9a1522f
+SHA512: 40105e40ee87be5d83e595b07bf357cfb69ae5d7d8242eb06185e1ad64df711858c03fccbdf445f724b12eb7be80009c525185e5ad674662c720b4219f9c9119
 Description: Visual do iNTEGRA OS
  Tema de cores, papel de parede, tela de inicialização, tema de janelas
  no estilo Windows, layout da barra de tarefas e ajustes de desempenho.
 
 Package: integra-restauracao
 Architecture: all
-Version: 0.5~teste
+Version: 0.6~teste
 Priority: optional
 Section: admin
 Maintainer: Projeto iNTEGRA <integra@localhost>
 Depends: timeshift, util-linux
-Filename: pool/main/integra-restauracao_0.5~teste_all.deb
+Filename: pool/main/integra-restauracao_0.6~teste_all.deb
 Size: 3436
-MD5sum: 7acf48309b3f380f77cf5491787b5a2d
-SHA1: 7de9a452ded2ac24dacf7c9c8abee957981c9262
-SHA256: 229e8d55ae883169d9748b2319a2c0beeb190df5f6a29c04073ef39e6dd17d45
-SHA512: cb78a5e578bf372928d75191b8ed0ac17bfc872e8f7f4129f44ce19ad8588f95faad573587bc61a7b89e4d81076c9a0ed2624115834459955e5fdb857b79890b
+MD5sum: 83ad3af70cd469ff0e6e5b3f6156426b
+SHA1: ee0a366e4be07259422289e9efe5851cb40c0670
+SHA256: 45af2f77ae49773d721bc50a00ba48007356145eb75620a9c5afd461d7437508
+SHA512: e2d43c70e7bae962cfd99eb250b8bd61bb422e184df2fbc4a81cd04b94ac012a6cee7c4752a9755863cc82d9e7ce7580436dc00d0e0ac71823861d1713d2e277
 Description: Pontos de restauração automáticos antes das atualizações
  Gancho do APT que cria um ponto do Timeshift antes de instalar ou
  atualizar pacotes e guarda os mais recentes.
 
 Package: integra-windows
 Architecture: all
-Version: 0.5~teste
+Version: 0.6~teste
 Priority: optional
 Section: otherosfs
 Maintainer: Projeto iNTEGRA <integra@localhost>
 Depends: python3, python3-pyqt6, wine | winehq-stable
-Filename: pool/main/integra-windows_0.5~teste_all.deb
+Filename: pool/main/integra-windows_0.6~teste_all.deb
 Size: 6016
-MD5sum: b3637dad59d742184a14bc711daf5fab
-SHA1: eb4246f23e2745d80830d1def80e3313a77e0b36
-SHA256: bd1d18813b8de34be17b4213d0234942b5c599c95d5feca74852d54198f65646
-SHA512: b503982c3beb55e7b20f99e657654ca270bb7ad9c42d4d058578e1f4e6e436d68a5c9da27d992dc525fe184b7e2a4b3a2b1ca042651bba67860794846eac8047
+MD5sum: 633eb8d6645fa3c9684eb0189f4937c2
+SHA1: d664afc772c4958165cb8035f55355a256b6d8e2
+SHA256: 689494604f302a79b449e8d50388b99d8d466638e8a01b03e67f581fef7e933b
+SHA512: 71fe070434ce8b2d139858535d6b4306096f7aeeda9a9e9308680c8b9891ca22d9492a2320629567303aca95a2975ddf6033d51c07aec40ab694a3d682457f38
 Description: Instala e executa programas do Windows (.exe e .msi)
  Cada programa roda num ambiente próprio do Wine, depois de um aviso de
  compatibilidade estimada.
@@ -143,11 +143,11 @@ Section: net
 Maintainer: Projeto iNTEGRA <integra@localhost>
 Depends: python3, python3-pyqt6, python3-pyqt6.qtwebengine, python3-pyqt6.qtwebchannel
 Filename: pool/main/zapzap_7.5.1-1integra1_all.deb
-Size: 440920
-MD5sum: c629606b005d866b47bb4e40c2f40a6c
-SHA1: 88ca14342f57fc779ed6587aecfaca85894a8420
-SHA256: 56a2ff4e25412cc40eef9d28a3cfa813d4837ad2cf36c9c58933514bdae2c63e
-SHA512: d688840b5e3f07af2025af6e5e71bb1316263c9d8fb2398183bc3ac6278b2594ba2babac2ef4c09ecc2aec95ed9a8f63f854572a9b4cffe6fa4f939b41bd7701
+Size: 440304
+MD5sum: 70409406310d1c18d1a4a8a9dd32632c
+SHA1: 036f3f6d59e7119dbfe37ce7f22198d064c04195
+SHA256: f82a90ec0bcf5bf05293459025e4fa0019ec1817e2d5e2ee223b3257f9eaaa5b
+SHA512: d5df73e70e9e1303bf915c0a7bd1f61e761ce3fc3961f2f5430d58bc2ecbd2a01bd0ccd64102c6ae42588ad0f2d31644845015625c9e98e43394be513ec3cf07
 Homepage: https://github.com/rafatosta/zapzap
 Description: ZapZap: cliente do WhatsApp Web para Linux
  Janela própria para o WhatsApp Web, com ícone na bandeja, notificações e
