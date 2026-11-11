@@ -1,4 +1,4 @@
-# iNTEGRA OS — construção da ISO de teste (versão 0.6)
+# iNTEGRA OS — construção da ISO de teste (versão 0.6.1)
 
 Estes scripts montam uma imagem ISO do iNTEGRA OS sobre o Ubuntu 26.04 LTS:
 KDE Plasma 6 com o tema iNTEGRA, Central iNTEGRA, janelas no estilo Windows,
@@ -11,6 +11,7 @@ A versão 0.4 é a primeira instalada no disco pelo instalador, do começo ao fi
 A versão 0.5 traz programas de uso diário: Euro-Office, WhatsApp (ZapZap),
 Google Drive e o instalador do Logos Bible.
 A versão 0.6 é a primeira que recebe atualizações deste repositório no GitHub.
+A 0.6.1 corrige a instalação em computadores com UEFI e ajusta o sistema para PCs com 4 GB de RAM.
 
 É uma versão de **teste**. Use em máquina virtual ou num computador de testes.
 
@@ -44,7 +45,7 @@ sudo ./build.sh
 ```
 
 Leva de 30 a 60 minutos, conforme o computador e a internet.
-A ISO fica em `/srv/integra-build/saida/iNTEGRA-OS-0.6-teste-amd64.iso` (cerca de 3,7 GB).
+A ISO fica em `/srv/integra-build/saida/iNTEGRA-OS-0.6.1-teste-amd64.iso` (cerca de 3,7 GB).
 
 Dá para rodar só algumas etapas, na ordem: `base`, `pacotes`, `terceiros`, `marca`, `limpeza`, `imagem`.
 Exemplo, depois de mudar só o visual:
@@ -195,6 +196,22 @@ A 0.6 usa uma **chave de teste**, impressão digital `27F7 F318 72AC 7D30 BF03 F
 - Logos: só o painel do instalador foi testado. A instalação do Logos em si precisa de conta Faithlife e de vários GB de download.
 - Euro-Office: a página inicial abriu em português, mas o editor de texto não terminou de carregar em 35 minutos na máquina virtual sem aceleração. Falta testar num computador real ou no VirtualBox antes de confiar nele.
 - ZapZap: na primeira vez, abre o site do projeto no navegador e mostra um pedido de doação. É do próprio ZapZap.
+
+## Primeiro teste em computador real (11/11/2026)
+
+HP Compaq 8200 Elite SFF: Core i5-2400 (2ª geração, 2011), 4 GB de RAM, Intel HD Graphics 2000.
+
+- A sessão de teste (0.6) abriu com aceleração gráfica de verdade (Mesa, driver da Intel).
+- A instalação parou no fim: "cp /etc/apt/sources.list.d/cdrom.sources ... No such file or directory". O computador iniciou o pendrive em modo **UEFI**. Todos os testes anteriores, em máquina virtual, foram em modo BIOS. O passo do Kubuntu que roda só em UEFI copia esse arquivo, que a ISO do iNTEGRA não tem.
+
+Correções da 0.6.1:
+
+- O passo de UEFI agora só confere se o GRUB para UEFI e o shim estão instalados (já vêm na imagem); se faltarem, tenta a internet.
+- O GRUB também é gravado em `\EFI\BOOT\BOOTX64.EFI`. Placas antigas da HP, da Dell e da Lenovo às vezes ignoram a entrada gravada na NVRAM.
+- Memória: swap comprimida na RAM (zram, até metade da memória, zstd) com `vm.swappiness=150`, e o earlyoom, que fecha o programa que estourar a memória antes de o sistema travar. Área de trabalho e KWin ficam protegidos; programas do Windows e páginas de navegador saem primeiro.
+- Vídeo: `i965-va-driver`, decodificação de vídeo pela placa nas Intel de 2ª a 7ª geração.
+
+Testado na máquina virtual em modo UEFI, com a CPU emulada como Sandy Bridge (a mesma geração do i5-2400): ver o resultado abaixo.
 
 ## Resultado do teste da versão 0.5 (10/11/2026)
 

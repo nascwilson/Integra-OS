@@ -26,6 +26,9 @@ cups
 ipp-usb
 sane-airscan
 mesa-vulkan-drivers
+# vídeo acelerado em Intel de 2008 a 2017 (Core i de 2ª a 7ª geração, como o
+# i5-2400 com HD Graphics 2000); o intel-media-va-driver só cobre da 5ª em diante
+i965-va-driver
 
 # --- área de trabalho (Plasma enxuto) ---
 kde-plasma-desktop
@@ -81,6 +84,12 @@ usbutils
 # --- instalador ---
 calamares
 calamares-settings-kubuntu
+
+# --- memória (computadores com 4 GB) ---
+# swap comprimida na RAM (zram) e um vigia que fecha o programa que estourar
+# a memória antes de o sistema travar
+systemd-zram-generator
+earlyoom
 
 # --- criptografia de disco (opção do instalador) ---
 # Marcados como escolhidos à mão. Sem isso, a limpeza final do instalador

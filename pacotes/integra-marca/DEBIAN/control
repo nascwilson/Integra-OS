@@ -4,7 +4,7 @@ Version: @VERSAO@
 Architecture: all
 Priority: optional
 Section: x11
-Depends: base-files, plymouth, plymouth-label, kwin-style-aurorae, fonts-inter
+Depends: base-files, plymouth, plymouth-label, kwin-style-aurorae, fonts-inter, systemd-zram-generator, earlyoom
 Description: Visual do iNTEGRA OS
  Tema de cores, papel de parede, tela de inicialização, tema de janelas
  no estilo Windows, layout da barra de tarefas e ajustes de desempenho.

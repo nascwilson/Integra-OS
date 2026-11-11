@@ -2,13 +2,13 @@
 # =============================================================================
 #  Gera os pacotes .deb da camada iNTEGRA a partir de pacotes/<nome>/.
 #  Uso: ./repo/gerar-pacotes.sh [versão] [pasta de saída]
-#  Ex.: ./repo/gerar-pacotes.sh 0.6-teste /srv/integra-build/saida/pacotes
+#  Ex.: ./repo/gerar-pacotes.sh 0.6.1-teste /srv/integra-build/saida/pacotes
 # =============================================================================
 set -euo pipefail
 AQUI="$(cd "$(dirname "$0")/.." && pwd)"
-VERSAO="${1:-0.6-teste}"
+VERSAO="${1:-0.6.1-teste}"
 SAIDA="${2:-$AQUI/saida/pacotes}"
-VERSAO_DEB="${VERSAO//-/\~}"          # 0.6-teste -> 0.5~teste (vem antes da 0.5 final)
+VERSAO_DEB="${VERSAO//-/\~}"          # 0.6.1-teste -> 0.5~teste (vem antes da 0.5 final)
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 

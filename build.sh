@@ -6,7 +6,7 @@
 #  Etapas: base pacotes marca limpeza imagem
 #
 #  Opções (variáveis de ambiente):
-#    VERSAO=0.6-teste      versão impressa no sistema
+#    VERSAO=0.6.1-teste      versão impressa no sistema
 #    WINE=ubuntu|winehq    ubuntu = Wine 10 do Ubuntu (padrão, testado)
 #                          winehq = Wine 11 do repositório oficial WineHQ (experimental)
 #    COMPRESSAO=15         nível zstd da imagem (menor = mais rápido, ISO maior)
@@ -20,7 +20,7 @@ TRAB="${TRAB:-/srv/integra-build}"
 RAIZ="$TRAB/chroot"
 ISO="$TRAB/iso"
 SAIDA="${SAIDA:-$TRAB/saida}"
-VERSAO="${VERSAO:-0.6-teste}"
+VERSAO="${VERSAO:-0.6.1-teste}"
 WINE="${WINE:-ubuntu}"
 SERIE="resolute"                      # Ubuntu 26.04 LTS
 ESPELHO="${ESPELHO:-http://archive.ubuntu.com/ubuntu}"
@@ -244,6 +244,25 @@ script:
     - "cp /root/.cache/calamares/session.log ${ROOT}/var/log/installer/debug 2>/dev/null; cp /var/log/casper.log ${ROOT}/var/log/installer/casper.log 2>/dev/null; chmod 600 ${ROOT}/var/log/installer/debug ${ROOT}/var/log/installer/casper.log 2>/dev/null; true"
     - "cp /cdrom/.disk/info ${ROOT}/var/log/installer/media-info 2>/dev/null; gzip --stdout ${ROOT}/var/lib/dpkg/status > ${ROOT}/var/log/installer/initial-status.gz; chmod 644 ${ROOT}/var/log/installer/media-info ${ROOT}/var/log/installer/initial-status.gz 2>/dev/null; true"
 LOGS
+    # Computadores com UEFI: o Kubuntu copia cdrom.sources e baixa o GRUB
+    # para EFI e o shim do pendrive. A ISO do iNTEGRA não tem esse arquivo e
+    # a instalação parava ali (teste no HP Compaq 8200 Elite, 11/11/2026).
+    # Os pacotes já vêm na imagem; só se faltarem, tenta a internet.
+    cat > "$C/modules/before_bootloader_context.conf" <<'EFI'
+---
+firmwareType:
+    bios:    "-/bin/true"
+    "*":
+        -    command: "-sh -c 'dpkg -s grub-efi-amd64-signed shim-signed grub-efi-amd64-bin efibootmgr >/dev/null 2>&1 || apt-get install -y --no-upgrade grub-efi-amd64-signed shim-signed grub-efi-amd64-bin efibootmgr'"
+             timeout: 1800
+EFI
+    # Firmwares UEFI antigos (HP, Dell e Lenovo de 2010 a 2014) às vezes ignoram
+    # a entrada gravada na NVRAM: grava também \EFI\BOOT\BOOTX64.EFI
+    if grep -q '^installEFIFallback' "$C/modules/bootloader.conf"; then
+      sed -i 's/^installEFIFallback:.*/installEFIFallback: true/' "$C/modules/bootloader.conf"
+    else
+      echo 'installEFIFallback: true' >> "$C/modules/bootloader.conf"
+    fi
     if ! grep -q '^btrfsSubvolumes' "$C/modules/mount.conf"; then
       cat >> "$C/modules/mount.conf" <<'SUBVOL'
 
