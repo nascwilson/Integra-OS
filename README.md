@@ -1,4 +1,4 @@
-# iNTEGRA OS — construção da ISO de teste (versão 0.5)
+# iNTEGRA OS — construção da ISO de teste (versão 0.6)
 
 Estes scripts montam uma imagem ISO do iNTEGRA OS sobre o Ubuntu 26.04 LTS:
 KDE Plasma 6 com o tema iNTEGRA, Central iNTEGRA, janelas no estilo Windows,
@@ -10,6 +10,7 @@ que podem ser publicados num repositório próprio para enviar atualizações.
 A versão 0.4 é a primeira instalada no disco pelo instalador, do começo ao fim.
 A versão 0.5 traz programas de uso diário: Euro-Office, WhatsApp (ZapZap),
 Google Drive e o instalador do Logos Bible.
+A versão 0.6 é a primeira que recebe atualizações deste repositório no GitHub.
 
 É uma versão de **teste**. Use em máquina virtual ou num computador de testes.
 
@@ -43,7 +44,7 @@ sudo ./build.sh
 ```
 
 Leva de 30 a 60 minutos, conforme o computador e a internet.
-A ISO fica em `/srv/integra-build/saida/iNTEGRA-OS-0.5-teste-amd64.iso` (3,7 GB; a 0.4 tinha 3,1 GB).
+A ISO fica em `/srv/integra-build/saida/iNTEGRA-OS-0.6-teste-amd64.iso` (cerca de 3,7 GB).
 
 Dá para rodar só algumas etapas, na ordem: `base`, `pacotes`, `terceiros`, `marca`, `limpeza`, `imagem`.
 Exemplo, depois de mudar só o visual:
@@ -159,7 +160,19 @@ O `build.sh` gera os pacotes e um repositório APT em `/srv/integra-build/saida/
 
 A partir daí, cada nova versão dos pacotes chega aos computadores pelo Discover, como qualquer atualização.
 
-Código-fonte: https://github.com/nascwilson/Integra-OS. Endereço previsto para os pacotes: o mesmo repositório, com o GitHub Pages servindo a pasta do repositório APT. O Euro-Office fica de fora (330 MB; o GitHub não aceita arquivos acima de 100 MB num repositório).
+### Endereço em uso
+
+- Código-fonte: ramo `main` de https://github.com/nascwilson/Integra-OS
+- Pacotes: ramo `gh-pages`, servido pelo GitHub Pages em https://nascwilson.github.io/Integra-OS
+- A ISO 0.6 foi gerada com `INTEGRA_REPO_URL=https://nascwilson.github.io/Integra-OS` e grava `/etc/apt/sources.list.d/integra.sources`.
+
+Para publicar uma versão nova dos pacotes: gere o repositório assinado, copie o conteúdo de `saida/repositorio` para o ramo `gh-pages` e envie. Para que o Discover ofereça a atualização, a versão precisa ser maior que a instalada (`0.6~teste` < `0.6.1~teste` < `0.6`).
+
+O Euro-Office fica de fora (330 MB; o GitHub não aceita arquivos acima de 100 MB num repositório).
+
+### Chave de assinatura
+
+A 0.6 usa uma **chave de teste**, impressão digital `27F7 F318 72AC 7D30 BF03 FFB4 40F0 6295 301B BFDC`, válida até 11/11/2027. Ela foi criada fora do computador do mantenedor e não deve assinar uma versão distribuída. Antes de distribuir: criar a chave definitiva num computador confiável, gerar a ISO com ela e publicar o repositório assinado por ela. Computadores com a chave de teste precisarão receber a chave nova por um pacote assinado pela antiga.
 
 ## Limites conhecidos desta versão
 
@@ -168,7 +181,8 @@ Código-fonte: https://github.com/nascwilson/Integra-OS. Endereço previsto para
 - A Central iNTEGRA usa cores escuras fixas; ainda não acompanha um tema claro.
 - O tema de janelas usa o motor Aurorae do KDE, um pouco mais pesado que o padrão Breeze.
 - O aviso de compatibilidade é uma estimativa local. Ainda não consulta bancos de dados de compatibilidade na internet.
-- O repositório de atualizações ainda não tem endereço público.
+- O repositório de atualizações usa uma chave de assinatura de teste.
+- Do ambiente de construção não dá para acessar o GitHub Pages. O `apt update` foi testado com o mesmo repositório servido localmente, não com o endereço público.
 - Os botões do aviso de atualizações ("Atualizar agora", "Ver na Central") não foram testados com clique: na máquina virtual, sem aceleração 3D, o Plasma não desenhou as janelas flutuantes de aviso. O aviso chegou ao histórico de notificações.
 - Instalação com disco criptografado ainda não testada.
 - No resumo do instalador aparecem duas frases com "1" no lugar do valor ("Configure timezone para 1"). É erro de tradução do próprio Calamares; a configuração gravada sai certa.

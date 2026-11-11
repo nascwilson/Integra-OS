@@ -22,7 +22,7 @@ from PyQt6.QtWidgets import (
     QScrollArea, QSizePolicy, QStackedWidget, QVBoxLayout, QWidget,
 )
 
-VERSAO = "0.5"
+VERSAO = "0.6"
 PREFIXOS = Path(os.environ.get("XDG_DATA_HOME", str(Path.home() / ".local/share"))) / "integra" / "windows"
 
 C = dict(fundo="#101E2F", painel="#0D1A2B", lateral="#0B1726", borda="#1F3650", texto="#E6EEF5",

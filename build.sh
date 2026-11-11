@@ -6,7 +6,7 @@
 #  Etapas: base pacotes marca limpeza imagem
 #
 #  Opções (variáveis de ambiente):
-#    VERSAO=0.5-teste      versão impressa no sistema
+#    VERSAO=0.6-teste      versão impressa no sistema
 #    WINE=ubuntu|winehq    ubuntu = Wine 10 do Ubuntu (padrão, testado)
 #                          winehq = Wine 11 do repositório oficial WineHQ (experimental)
 #    COMPRESSAO=15         nível zstd da imagem (menor = mais rápido, ISO maior)
@@ -20,7 +20,7 @@ TRAB="${TRAB:-/srv/integra-build}"
 RAIZ="$TRAB/chroot"
 ISO="$TRAB/iso"
 SAIDA="${SAIDA:-$TRAB/saida}"
-VERSAO="${VERSAO:-0.5-teste}"
+VERSAO="${VERSAO:-0.6-teste}"
 WINE="${WINE:-ubuntu}"
 SERIE="resolute"                      # Ubuntu 26.04 LTS
 ESPELHO="${ESPELHO:-http://archive.ubuntu.com/ubuntu}"
