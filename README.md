@@ -211,7 +211,7 @@ Correções da 0.6.1:
 - Memória: swap comprimida na RAM (zram, até metade da memória, zstd) com `vm.swappiness=150`, e o earlyoom, que fecha o programa que estourar a memória antes de o sistema travar. Área de trabalho e KWin ficam protegidos; programas do Windows e páginas de navegador saem primeiro.
 - Vídeo: `i965-va-driver`, decodificação de vídeo pela placa nas Intel de 2ª a 7ª geração.
 
-Testado na máquina virtual em modo UEFI, com a CPU emulada como Sandy Bridge (a mesma geração do i5-2400): ver o resultado abaixo.
+Teste na máquina virtual em modo UEFI, com a CPU emulada como Sandy Bridge (a mesma geração do i5-2400): sessão de teste, zram (1,9 GB) e earlyoom funcionando; o instalador passou do particionamento (disco GPT com partição EFI de 300 MB) e começou a copiar o sistema. As duas tentativas foram interrompidas por reinícios do ambiente de construção antes do passo que falhava. O passo novo foi conferido à parte: o arquivo de configuração é lido sem erro e a checagem dos pacotes retorna sucesso na imagem. Falta a confirmação no HP.
 
 ## Resultado do teste da versão 0.5 (10/11/2026)
 
