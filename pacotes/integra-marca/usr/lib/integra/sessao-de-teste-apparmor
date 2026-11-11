@@ -1,0 +1,14 @@
+#!/bin/sh
+# Sessão de teste (pendrive): o Ubuntu não carrega os perfis do AppArmor no
+# modo live (apparmor.service pula quando existe /rofs), mas o kernel continua
+# bloqueando "user namespaces" para programas sem perfil. Resultado visto no
+# teste da fase 5: Falkon e ZapZap fechavam na hora. Aqui só os perfis dos
+# programas com Chromium embutido são carregados. No sistema instalado o
+# apparmor.service carrega todos e este script não faz nada.
+grep -qw 'boot=casper' /proc/cmdline || exit 0
+command -v apparmor_parser >/dev/null || exit 0
+for perfil in QtWebEngineProcess usr.bin.falkon plasmashell zapzap; do
+    f="/etc/apparmor.d/$perfil"
+    [ -f "$f" ] && apparmor_parser -r -K "$f" 2>/dev/null || true
+done
+exit 0

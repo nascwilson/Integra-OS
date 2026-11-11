@@ -1,0 +1,99 @@
+# Pacotes do iNTEGRA OS (Ubuntu 26.04 LTS).  Linhas com # são comentários.
+
+# --- núcleo, sessão ao vivo e inicialização ---
+linux-generic
+casper
+systemd-sysv
+sudo
+plymouth
+plymouth-label
+plymouth-themes
+grub-efi-amd64-signed
+shim-signed
+grub-pc-bin
+efibootmgr
+os-prober
+
+# --- hardware e drivers ---
+ubuntu-drivers-common
+fwupd
+network-manager
+wpasupplicant
+bluez
+pipewire-audio
+wireplumber
+cups
+ipp-usb
+sane-airscan
+mesa-vulkan-drivers
+
+# --- área de trabalho (Plasma enxuto) ---
+kde-plasma-desktop
+sddm
+sddm-theme-breeze
+plasma-nm
+plasma-pa
+powerdevil
+bluedevil
+kscreen
+systemsettings
+kinfocenter
+plasma-systemmonitor
+dolphin
+konsole
+kwrite
+ark
+gwenview
+okular
+kde-spectacle
+kdialog
+plasma-discover
+plasma-discover-backend-fwupd
+print-manager
+partitionmanager
+falkon
+timeshift
+fonts-inter
+fonts-noto-color-emoji
+language-pack-pt
+language-pack-kde-pt
+# traduz os nomes das pastas pessoais (Documentos, Imagens...) e programas GTK
+language-pack-gnome-pt
+# gdbus: o aviso de atualizações do iNTEGRA fala com o Plasma por ele
+libglib2.0-bin
+
+# --- compatibilidade com programas do Windows ---
+# (com WINE=winehq no build, estas linhas são trocadas pelo winehq-stable)
+wine
+wine64
+wine32:i386
+winetricks
+fonts-wine
+
+# --- Central iNTEGRA e janelas no estilo Windows ---
+python3-pyqt6
+kwin-style-aurorae
+plasma-firewall
+ufw
+pciutils
+usbutils
+
+# --- instalador ---
+calamares
+calamares-settings-kubuntu
+
+# --- criptografia de disco (opção do instalador) ---
+# Marcados como escolhidos à mão. Sem isso, a limpeza final do instalador
+# remove o cryptsetup (visto no teste da fase 4), e um disco criptografado
+# precisa dele para ser aberto na inicialização.
+cryptsetup
+cryptsetup-initramfs
+
+# --- fora da imagem (o "-" no fim remove ou impede a instalação) ---
+# notificador residente do Discover: ~200 MB de RAM com o packagekitd;
+# o iNTEGRA usa um aviso que roda, confere e termina
+plasma-discover-notifier-
+# backup do Kup: o iNTEGRA usa os pontos de restauração do Timeshift
+kup-backup-
+# serviço de bandeja do Cinnamon, desnecessário no Plasma
+xapp-sn-watcher-

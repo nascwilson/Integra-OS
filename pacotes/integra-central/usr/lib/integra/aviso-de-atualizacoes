@@ -1,0 +1,97 @@
+#!/bin/bash
+# Aviso de atualizações do iNTEGRA OS.
+#
+# Substitui o notificador residente do Discover, que ocupava perto de 200 MB
+# de memória o tempo todo (medido na fase 4, com o packagekitd que ele mantém
+# acordado). Este aviso é chamado por um timer do systemd: 5 minutos depois
+# do login e a cada 6 horas. Confere, avisa se houver novidade e termina.
+#
+# As listas de pacotes são atualizadas pelo próprio sistema (apt-daily).
+# Atualizações de segurança continuam sendo instaladas sozinhas pelo
+# unattended-upgrades; este aviso cuida do resto.
+set -u
+
+ESTADO_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/integra"
+ESTADO="$ESTADO_DIR/aviso-de-atualizacoes"
+REPETIR_APOS=$((24 * 3600))   # mesmo conjunto de atualizações: lembra 1 vez por dia
+
+# sessão de teste (pendrive) e sessões sem tela não recebem aviso
+grep -qw 'boot=casper' /proc/cmdline 2>/dev/null && exit 0
+[ -n "${WAYLAND_DISPLAY:-}${DISPLAY:-}" ] || exit 0
+command -v gdbus >/dev/null || exit 0
+
+# sem listas de pacotes baixadas ainda, não há o que comparar
+compgen -G '/var/lib/apt/lists/*_Packages*' >/dev/null || exit 0
+
+# dist-upgrade inclui atualizações de kernel, que o "upgrade" simples segura
+lista=$(nice -n 10 apt-get -s -o Debug::NoLocking=1 dist-upgrade 2>/dev/null | grep '^Inst ')
+total=$(printf '%s' "$lista" | grep -c '^Inst ' || true)
+
+mkdir -p "$ESTADO_DIR"
+if [ "${total:-0}" -eq 0 ]; then
+  rm -f "$ESTADO"
+  exit 0
+fi
+
+assinatura=$(printf '%s' "$lista" | awk '{print $2, $3}' | md5sum | cut -c1-32)
+agora=$(date +%s)
+if [ -f "$ESTADO" ]; then
+  read -r ultima_assinatura ultimo_aviso < "$ESTADO" || true
+  if [ "${ultima_assinatura:-}" = "$assinatura" ] && \
+     [ $((agora - ${ultimo_aviso:-0})) -lt "$REPETIR_APOS" ]; then
+    exit 0
+  fi
+fi
+echo "$assinatura $agora" > "$ESTADO"
+
+seguranca=$(printf '%s' "$lista" | grep -ci -- '-security' || true)
+if [ "$total" -eq 1 ]; then
+  texto="1 atualização pronta para instalar."
+else
+  texto="$total atualizações prontas para instalar."
+fi
+if [ "${seguranca:-0}" -eq 1 ]; then
+  texto="$texto Uma delas é de segurança."
+elif [ "${seguranca:-0}" -gt 1 ]; then
+  texto="$texto $seguranca delas são de segurança."
+fi
+texto="$texto Antes de instalar, o iNTEGRA cria um ponto de restauração."
+
+# O aviso fala direto com o servidor de notificações pelo D-Bus. No teste
+# da fase 4, o notify-send 0.8.8 recusou os botões com o Plasma 6.6
+# ("Actions are not supported"), embora o Plasma anuncie suporte a eles.
+DEST=(--session --dest org.freedesktop.Notifications --object-path /org/freedesktop/Notifications)
+
+coproc MONITOR { exec gdbus monitor "${DEST[@]}" 2>/dev/null; }
+sleep 1   # tempo para o monitor se inscrever antes do aviso sair
+
+id=$(gdbus call "${DEST[@]}" --method org.freedesktop.Notifications.Notify \
+  "iNTEGRA OS" 0 "integra-logo" "Atualizações disponíveis" "$texto" \
+  "['default', 'Abrir atualizações', 'atualizar', 'Atualizar agora', 'central', 'Ver na Central']" \
+  "{'desktop-entry': <'org.integra.central'>}" "int32 -1" 2>/dev/null \
+  | sed -n 's/^(uint32 \([0-9][0-9]*\),)$/\1/p')
+
+acao=""
+if [ -n "$id" ]; then
+  # espera o clique ou o fechamento do aviso; no máximo 5 h
+  fim=$((SECONDS + 5 * 3600))
+  while [ "$SECONDS" -lt "$fim" ]; do
+    if read -r -t 60 linha <&"${MONITOR[0]}"; then
+      case "$linha" in
+        *"ActionInvoked (uint32 $id, '"*)
+          acao=${linha#*"(uint32 $id, '"}; acao=${acao%%"'"*}; break ;;
+        *"NotificationClosed (uint32 $id,"*)
+          break ;;
+      esac
+    elif [ $? -le 128 ]; then
+      break   # o monitor terminou (sessão encerrada)
+    fi
+  done
+fi
+kill "$MONITOR_PID" 2>/dev/null
+
+case "$acao" in
+  default|atualizar) exec plasma-discover --mode update ;;
+  central)           exec integra-central ;;
+esac
+exit 0

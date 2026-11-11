@@ -1,0 +1,3 @@
+#!/bin/sh
+# Abre a Central iNTEGRA (gerenciadores do sistema).
+exec python3 /usr/lib/integra/central/central.py "$@"

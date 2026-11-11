@@ -1,0 +1,12 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "Projeto iNTEGRA"
+            }
+        ],
+        "Id": "iNTEGRA",
+        "License": "CC-BY-SA-4.0",
+        "Name": "iNTEGRA"
+    }
+}

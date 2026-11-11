@@ -1,0 +1,10 @@
+Package: integra-central
+Maintainer: Projeto iNTEGRA <integra@localhost>
+Version: @VERSAO@
+Architecture: all
+Priority: optional
+Section: admin
+Depends: python3, python3-pyqt6, pciutils, usbutils, ubuntu-drivers-common, policykit-1 | polkitd, plasma-systemmonitor, partitionmanager, plasma-firewall, ufw, timeshift, libglib2.0-bin
+Description: Central iNTEGRA: gerenciadores do sistema num só lugar
+ Visão geral, dispositivos e drivers, programas do Windows e atalhos para
+ os gerenciadores do Plasma.

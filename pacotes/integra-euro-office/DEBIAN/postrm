@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+if [ "$1" = "remove" ] || [ "$1" = "abort-install" ] || [ "$1" = "disappear" ]; then
+    dpkg-divert --package integra-euro-office --remove --rename \
+        --divert /usr/bin/euro-office-euro-office.real /usr/bin/euro-office-euro-office >/dev/null || true
+fi
+exit 0

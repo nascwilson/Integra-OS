@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="46" height="320" viewBox="0 0 46 320">
+<g id="active-center"><rect x="0" y="0" width="46" height="32" fill="#000000" fill-opacity="0"/><rect x="18" y="16" width="10" height="1" fill="#E6EEF5"/></g>
+<g id="hover-center"><rect x="0" y="40" width="46" height="32" fill="#000000" fill-opacity="0"/><rect x="0" y="40" width="46" height="32" fill="#1B3049"/><rect x="18" y="56" width="10" height="1" fill="#FFFFFF"/></g>
+<g id="pressed-center"><rect x="0" y="80" width="46" height="32" fill="#000000" fill-opacity="0"/><rect x="0" y="80" width="46" height="32" fill="#24405C"/><rect x="18" y="96" width="10" height="1" fill="#FFFFFF"/></g>
+<g id="inactive-center"><rect x="0" y="120" width="46" height="32" fill="#000000" fill-opacity="0"/><rect x="18" y="136" width="10" height="1" fill="#8EA3B8"/></g>
+<g id="hover-inactive-center"><rect x="0" y="160" width="46" height="32" fill="#000000" fill-opacity="0"/><rect x="0" y="160" width="46" height="32" fill="#1B3049"/><rect x="18" y="176" width="10" height="1" fill="#FFFFFF"/></g>
+<g id="pressed-inactive-center"><rect x="0" y="200" width="46" height="32" fill="#000000" fill-opacity="0"/><rect x="0" y="200" width="46" height="32" fill="#24405C"/><rect x="18" y="216" width="10" height="1" fill="#FFFFFF"/></g>
+<g id="deactivated-center"><rect x="0" y="240" width="46" height="32" fill="#000000" fill-opacity="0"/><rect x="18" y="256" width="10" height="1" fill="#4A5F75"/></g>
+<g id="deactivated-inactive-center"><rect x="0" y="280" width="46" height="32" fill="#000000" fill-opacity="0"/><rect x="18" y="296" width="10" height="1" fill="#4A5F75"/></g>
+</svg>

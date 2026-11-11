@@ -1,0 +1,10 @@
+Package: integra-windows
+Maintainer: Projeto iNTEGRA <integra@localhost>
+Version: @VERSAO@
+Architecture: all
+Priority: optional
+Section: otherosfs
+Depends: python3, python3-pyqt6, wine | winehq-stable
+Description: Instala e executa programas do Windows (.exe e .msi)
+ Cada programa roda num ambiente próprio do Wine, depois de um aviso de
+ compatibilidade estimada.

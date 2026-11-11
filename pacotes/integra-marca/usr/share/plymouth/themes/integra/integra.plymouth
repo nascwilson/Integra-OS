@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=iNTEGRA
+Description=Tela de inicialização do iNTEGRA OS
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/integra
+ScriptFile=/usr/share/plymouth/themes/integra/integra.script

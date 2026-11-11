@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Instalar o iNTEGRA OS
+GenericName=Instalador do sistema
+Comment=Instala o iNTEGRA OS neste computador
+Exec=sudo /usr/bin/calamares-launch-normal
+Icon=integra-logo
+Terminal=false
+StartupNotify=true
+Categories=Qt;System;
+Keywords=instalar;instalador;installer;calamares;sistema;

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Google Drive
+GenericName=Arquivos na nuvem
+Comment=Mostra os arquivos do seu Google Drive como uma pasta
+Exec=integra-google-drive
+Icon=folder-gdrive
+Categories=Network;FileTransfer;Qt;
+Keywords=Google;Drive;nuvem;arquivos;rclone;
+Terminal=false

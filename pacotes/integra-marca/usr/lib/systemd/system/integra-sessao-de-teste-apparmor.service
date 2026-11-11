@@ -1,0 +1,12 @@
+[Unit]
+Description=iNTEGRA: perfis do AppArmor dos navegadores na sessão de teste
+ConditionKernelCommandLine=boot=casper
+After=local-fs.target
+Before=display-manager.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/integra/sessao-de-teste-apparmor
+
+[Install]
+WantedBy=multi-user.target

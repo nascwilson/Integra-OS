@@ -1,0 +1,9 @@
+#!/bin/sh
+# iNTEGRA OS: o Euro-Office 9.3.6 abre pela XWayland. Na sessão Wayland do
+# Plasma, sem aceleração 3D, a janela ficou sem conteúdo no teste da fase 5;
+# pela XWayland ela desenhou normalmente. Para testar o modo Wayland:
+#   EURO_OFFICE_WAYLAND=1 euro-office-euro-office
+if [ -z "${EURO_OFFICE_WAYLAND:-}" ]; then
+    export QT_QPA_PLATFORM=xcb
+fi
+exec /usr/bin/euro-office-euro-office.real "$@"

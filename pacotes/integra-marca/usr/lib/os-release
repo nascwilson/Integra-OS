@@ -1,0 +1,9 @@
+PRETTY_NAME="iNTEGRA OS @VERSAO@"
+NAME="iNTEGRA OS"
+VERSION_ID="@VERSAO_ID@"
+VERSION="@VERSAO@"
+VERSION_CODENAME=resolute
+ID=integra
+ID_LIKE="ubuntu debian"
+UBUNTU_CODENAME=resolute
+LOGO=integra-logo

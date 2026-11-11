@@ -1,0 +1,33 @@
+---
+componentName:  integra
+
+welcomeStyleCalamares:   false
+welcomeExpandingLogo:   true
+windowExpanding:    normal
+windowSize: 960px,640px
+windowPlacement: center
+sidebar: widget
+navigation: widget
+
+strings:
+    productName:         "iNTEGRA OS"
+    shortProductName:    "iNTEGRA"
+    version:             "@VERSAO@"
+    shortVersion:        "@VERSAO@"
+    versionedName:       "iNTEGRA OS @VERSAO@"
+    shortVersionedName:  "iNTEGRA @VERSAO@"
+    bootloaderEntryName: "iNTEGRA"
+
+images:
+    productLogo:         "logo.png"
+    productIcon:         "logo.png"
+    productWelcome:      "boas-vindas.png"
+
+slideshow:               "show.qml"
+slideshowAPI:            2
+
+style:
+   SidebarBackground:        "#08131F"
+   SidebarText:              "#E6EEF5"
+   SidebarTextCurrent:       "#FFFFFF"
+   SidebarBackgroundCurrent: "#0077B6"

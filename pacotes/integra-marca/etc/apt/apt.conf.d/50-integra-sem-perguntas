@@ -1,0 +1,4 @@
+// iNTEGRA OS: atualizações não param para perguntar sobre arquivos de
+// configuração. Arquivo sem mudança local recebe a versão nova; arquivo
+// alterado (pelo usuário ou pelo iNTEGRA) fica como está.
+Dpkg::Options { "--force-confdef"; "--force-confold"; };

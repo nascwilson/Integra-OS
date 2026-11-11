@@ -1,0 +1,16 @@
+{
+    "KPackageStructure": "Plasma/LookAndFeel",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "Projeto iNTEGRA"
+            }
+        ],
+        "Description": "Visual padrão do iNTEGRA OS: tema escuro, barra de tarefas embaixo e janelas no estilo Windows",
+        "Id": "org.integra.desktop",
+        "License": "GPL-2.0-or-later",
+        "Name": "iNTEGRA",
+        "Version": "0.1"
+    },
+    "X-Plasma-APIVersion": "2"
+}

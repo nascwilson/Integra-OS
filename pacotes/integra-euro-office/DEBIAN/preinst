@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+# O lançador do Euro-Office é desviado para .real; o do iNTEGRA o chama
+# com QT_QPA_PLATFORM=xcb. Atualizações do Euro-Office gravam no .real.
+if [ "$1" = "install" ] || [ "$1" = "upgrade" ]; then
+    dpkg-divert --package integra-euro-office --add --rename \
+        --divert /usr/bin/euro-office-euro-office.real /usr/bin/euro-office-euro-office >/dev/null
+fi
+exit 0

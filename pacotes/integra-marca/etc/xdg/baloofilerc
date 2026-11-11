@@ -1,0 +1,3 @@
+# Indexação de arquivos desligada por padrão (economiza memória e disco)
+[Basic Settings]
+Indexing-Enabled=false

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Central iNTEGRA
+GenericName=Gerenciadores do sistema
+Comment=Dispositivos, drivers, programas do Windows, atualizações e configurações num só lugar
+Exec=integra-central
+Icon=integra-logo
+Terminal=false
+StartupNotify=true
+Categories=Qt;KDE;System;Settings;
+Keywords=configurações;gerenciador;drivers;dispositivos;windows;atualizações;painel de controle;

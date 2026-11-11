@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=iNTEGRA: ajustes da sessão de teste
+Exec=/usr/lib/integra/sessao-de-teste.sh
+NoDisplay=true
+X-KDE-autostart-phase=1
+OnlyShowIn=KDE;

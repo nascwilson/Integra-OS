@@ -1,0 +1,10 @@
+Package: integra-restauracao
+Maintainer: Projeto iNTEGRA <integra@localhost>
+Version: @VERSAO@
+Architecture: all
+Priority: optional
+Section: admin
+Depends: timeshift, util-linux
+Description: Pontos de restauração automáticos antes das atualizações
+ Gancho do APT que cria um ponto do Timeshift antes de instalar ou
+ atualizar pacotes e guarda os mais recentes.

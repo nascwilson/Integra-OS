@@ -1,0 +1,20 @@
+[Unit]
+Description=Google Drive como pasta (rclone)
+Documentation=man:rclone(1)
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStartPre=/usr/bin/mkdir -p "%h/Google Drive"
+# cache em disco para abrir rápido e funcionar com programas que gravam
+# em partes (editores de texto e planilhas); limite de 2 GB
+ExecStart=/usr/bin/rclone mount GoogleDrive: "%h/Google Drive" \
+    --vfs-cache-mode full --vfs-cache-max-size 2G --vfs-cache-max-age 72h \
+    --dir-cache-time 5m --poll-interval 1m --log-level NOTICE
+ExecStop=/usr/bin/fusermount3 -uz "%h/Google Drive"
+Restart=on-failure
+RestartSec=30
+Nice=5
+
+[Install]
+WantedBy=default.target

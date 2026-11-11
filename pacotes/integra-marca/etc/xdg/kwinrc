@@ -1,0 +1,21 @@
+# iNTEGRA: janelas no estilo Windows e efeitos pesados desligados
+[org.kde.kdecoration2]
+library=org.kde.kwin.aurorae
+theme=__aurorae__svg__iNTEGRA
+ButtonsOnLeft=M
+ButtonsOnRight=IAX
+
+[Plugins]
+blurEnabled=false
+contrastEnabled=false
+wobblywindowsEnabled=false
+
+[Effect-overview]
+BorderActivate=9
+
+[ElectricBorders]
+TopLeft=None
+
+[Windows]
+ElectricBorderMaximize=true
+ElectricBorderTiling=true

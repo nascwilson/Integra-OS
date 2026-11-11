@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+if [ "$1" = "remove" ] || [ "$1" = "abort-install" ] || [ "$1" = "disappear" ]; then
+    dpkg-divert --package integra-marca --remove --no-rename \
+        --divert /usr/lib/os-release.ubuntu /usr/lib/os-release >/dev/null || true
+    if [ -e /usr/lib/os-release.ubuntu ]; then
+        mv -f /usr/lib/os-release.ubuntu /usr/lib/os-release
+    fi
+fi
+exit 0

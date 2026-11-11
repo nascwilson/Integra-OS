@@ -1,0 +1,10 @@
+{
+    "KPlugin": {
+        "Authors": [{"Name": "Projeto iNTEGRA"}],
+        "Description": "Janelas do iNTEGRA OS: barra plana e botões no estilo Windows",
+        "Id": "iNTEGRA",
+        "License": "GPL-2.0-or-later",
+        "Name": "iNTEGRA",
+        "Version": "0.2"
+    }
+}

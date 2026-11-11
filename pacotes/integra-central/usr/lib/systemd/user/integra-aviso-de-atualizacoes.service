@@ -1,0 +1,8 @@
+[Unit]
+Description=Aviso de atualizações do iNTEGRA OS
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/lib/integra/aviso-de-atualizacoes
+Nice=10

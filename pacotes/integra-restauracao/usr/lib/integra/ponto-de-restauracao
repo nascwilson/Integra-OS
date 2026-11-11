@@ -1,0 +1,139 @@
+#!/bin/bash
+# =============================================================================
+#  iNTEGRA OS — ponto de restauração antes de instalar ou atualizar pacotes.
+#  Chamado pelo APT (DPkg::Pre-Invoke). Usa o Timeshift.
+#
+#  Regras:
+#   - nunca impede a atualização: qualquer problema vira só um aviso no log;
+#   - no máximo um ponto a cada INTERVALO minutos (padrão 60);
+#   - guarda os MANTER pontos mais recentes criados por ele (padrão 3);
+#   - configura o Timeshift sozinho na primeira vez (btrfs = instantâneo;
+#     ext4 = cópia com rsync, só se houver espaço livre suficiente);
+#   - não roda na sessão de teste (pendrive).
+#
+#  Desligar: sudo touch /etc/integra/sem-ponto-de-restauracao
+#  Ajustes:  /etc/integra/restauracao.conf  (INTERVALO=60, MANTER=3)
+# =============================================================================
+set -u
+
+LOG=/var/log/integra-restauracao.log
+ESTADO_DIR=/var/lib/integra
+ESTADO="$ESTADO_DIR/ultimo-ponto"
+CONF_TS=/etc/timeshift/timeshift.json
+COMENTARIO="Antes da atualização (iNTEGRA)"
+INTERVALO=60
+MANTER=3
+TIMESHIFT="${TIMESHIFT:-timeshift}"
+[ -r /etc/integra/restauracao.conf ] && . /etc/integra/restauracao.conf
+
+log() { mkdir -p "$(dirname "$LOG")"; echo "$(date '+%F %T') $*" >> "$LOG"; echo "iNTEGRA: $*" >&2; }
+
+[ "$(id -u)" -eq 0 ] || exit 0
+grep -qs "boot=casper" /proc/cmdline && exit 0
+[ -e /etc/integra/sem-ponto-de-restauracao ] && exit 0
+command -v "$TIMESHIFT" >/dev/null || { log "Timeshift não instalado; ponto de restauração não criado."; exit 0; }
+
+agora=$(date +%s)
+if [ -f "$ESTADO" ]; then
+  ultimo=$(cat "$ESTADO" 2>/dev/null || echo 0)
+  case "$ultimo" in ''|*[!0-9]*) ultimo=0 ;; esac
+  if [ $((agora - ultimo)) -lt $((INTERVALO * 60)) ]; then
+    exit 0
+  fi
+fi
+
+# --- configuração automática do Timeshift na primeira vez -------------------
+configurar() {
+  local tipo uuid btrfs
+  local fonte
+  tipo=$(findmnt -no FSTYPE / 2>/dev/null)
+  fonte=$(findmnt -no SOURCE / 2>/dev/null | sed 's/\[.*\]$//')
+  uuid=$(findmnt -no UUID / 2>/dev/null)
+  [ -z "$uuid" ] && [ -n "$fonte" ] && uuid=$(blkid -s UUID -o value "$fonte" 2>/dev/null)
+  uuid="${INTEGRA_UUID_DISCO:-$uuid}"   # só para testes
+  if [ -z "$uuid" ]; then
+    log "Não achei o disco do sistema; Timeshift não configurado."
+    return 1
+  fi
+  btrfs=false
+  if [ "$tipo" = "btrfs" ]; then
+    # o Timeshift exige os subvolumes @ (sistema) e @home (pastas pessoais)
+    if findmnt -no SOURCE / | grep -q '\[/@\]'; then
+      btrfs=true
+    else
+      log "Sistema em btrfs sem o subvolume @; usando cópia com rsync."
+    fi
+  fi
+  mkdir -p "$(dirname "$CONF_TS")"
+  cat > "$CONF_TS" <<EOF
+{
+  "backup_device_uuid" : "$uuid",
+  "parent_device_uuid" : "",
+  "do_first_run" : "false",
+  "btrfs_mode" : "$btrfs",
+  "include_btrfs_home_for_backup" : "false",
+  "include_btrfs_home_for_restore" : "false",
+  "stop_cron_emails" : "true",
+  "schedule_monthly" : "false",
+  "schedule_weekly" : "false",
+  "schedule_daily" : "false",
+  "schedule_hourly" : "false",
+  "schedule_boot" : "false",
+  "count_monthly" : "2",
+  "count_weekly" : "3",
+  "count_daily" : "5",
+  "count_hourly" : "6",
+  "count_boot" : "5",
+  "date_format" : "%Y-%m-%d %H:%M:%S",
+  "exclude" : [ "/home/**", "/root/**" ],
+  "exclude-apps" : []
+}
+EOF
+  log "Timeshift configurado (modo $([ "$btrfs" = true ] && echo btrfs || echo rsync), disco $uuid)."
+}
+
+if ! grep -qs '"backup_device_uuid" *: *"[^"]' "$CONF_TS"; then
+  configurar || exit 0
+fi
+
+# --- espaço livre (só importa no modo rsync, que copia o sistema) -----------
+if ! grep -qs '"btrfs_mode" *: *"true"' "$CONF_TS"; then
+  livre_kb=$(df -Pk / | awk 'NR==2 {print $4}')
+  usado_kb=$(df -Pk / | awk 'NR==2 {print $3}')
+  # primeira cópia ocupa perto do tamanho do sistema; exige folga de 5 GB
+  if [ "${livre_kb:-0}" -lt $((usado_kb + 5 * 1024 * 1024)) ] && [ ! -d /timeshift/snapshots ]; then
+    log "Pouco espaço livre para o primeiro ponto de restauração; atualização segue sem ele."
+    exit 0
+  fi
+  if [ "${livre_kb:-0}" -lt $((3 * 1024 * 1024)) ]; then
+    log "Menos de 3 GB livres; atualização segue sem ponto de restauração."
+    exit 0
+  fi
+fi
+
+# --- cria o ponto -----------------------------------------------------------
+log "Criando ponto de restauração antes da atualização..."
+# A data vai para o arquivo ANTES da cópia, para que ela própria carregue a
+# informação. Depois de uma restauração, a Central continua mostrando a data
+# certa do ponto em uso.
+mkdir -p "$ESTADO_DIR"
+anterior=$(cat "$ESTADO" 2>/dev/null || true)
+echo "$agora" > "$ESTADO"
+if "$TIMESHIFT" --create --scripted --comments "$COMENTARIO" --tags O >> "$LOG" 2>&1; then
+  log "Ponto de restauração criado."
+else
+  if [ -n "$anterior" ]; then echo "$anterior" > "$ESTADO"; else rm -f "$ESTADO"; fi
+  log "O Timeshift não conseguiu criar o ponto; atualização segue sem ele."
+  exit 0
+fi
+
+# --- guarda só os mais recentes criados pelo iNTEGRA -------------------------
+mapfile -t nossos < <("$TIMESHIFT" --list --scripted 2>/dev/null \
+  | grep -F "$COMENTARIO" \
+  | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}_[0-9]{2}-[0-9]{2}-[0-9]{2}' | sort)
+excesso=$(( ${#nossos[@]} - MANTER ))
+for ((i = 0; i < excesso; i++)); do
+  "$TIMESHIFT" --delete --snapshot "${nossos[$i]}" --scripted >> "$LOG" 2>&1 \
+    && log "Ponto antigo removido: ${nossos[$i]}"
+done
+exit 0

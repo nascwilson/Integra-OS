@@ -1,0 +1,9 @@
+[Unit]
+Description=Confere atualizações do iNTEGRA OS de tempos em tempos
+
+[Timer]
+OnStartupSec=5min
+OnUnitActiveSec=6h
+
+[Install]
+WantedBy=timers.target

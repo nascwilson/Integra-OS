@@ -1,0 +1,54 @@
+# Tela de inicialização do iNTEGRA OS
+# Fundo "Noite" #08131F, símbolo branco e barra de progresso azul.
+
+Window.SetBackgroundTopColor(0.031, 0.075, 0.122);
+Window.SetBackgroundBottomColor(0.031, 0.075, 0.122);
+
+largura = Window.GetWidth();
+altura = Window.GetHeight();
+x0 = Window.GetX();
+y0 = Window.GetY();
+
+logo.imagem = Image("logo.png");
+logo.sprite = Sprite(logo.imagem);
+logo.sprite.SetPosition(x0 + largura / 2 - logo.imagem.GetWidth() / 2,
+                        y0 + altura / 2 - logo.imagem.GetHeight() / 2 - 30, 1);
+
+barra.fundo = Image("barra-fundo.png");
+barra.cheia = Image("barra-cheia.png");
+barra.x = x0 + largura / 2 - barra.fundo.GetWidth() / 2;
+barra.y = y0 + altura / 2 + logo.imagem.GetHeight() / 2 + 30;
+barra.fundo_sprite = Sprite(barra.fundo);
+barra.fundo_sprite.SetPosition(barra.x, barra.y, 1);
+barra.cheia_sprite = Sprite();
+barra.cheia_sprite.SetPosition(barra.x, barra.y, 2);
+
+fun progresso(duracao, fracao) {
+    w = Math.Int(barra.cheia.GetWidth() * fracao);
+    if (w < 2) w = 2;
+    barra.cheia_sprite.SetImage(barra.cheia.Scale(w, barra.cheia.GetHeight()));
+}
+Plymouth.SetBootProgressFunction(progresso);
+
+# Senha de disco criptografado
+fun pedir_senha(texto, pontos) {
+    linha = texto + "  ";
+    for (i = 0; i < pontos; i++) linha = linha + "*";
+    senha.imagem = Image.Text(linha, 0.90, 0.93, 0.96);
+    senha.sprite = Sprite(senha.imagem);
+    senha.sprite.SetPosition(x0 + largura / 2 - senha.imagem.GetWidth() / 2, barra.y + 40, 3);
+    senha.sprite.SetOpacity(1);
+}
+Plymouth.SetDisplayPasswordFunction(pedir_senha);
+
+fun normal() {
+    if (senha.sprite) senha.sprite.SetOpacity(0);
+}
+Plymouth.SetDisplayNormalFunction(normal);
+
+fun mensagem(texto) {
+    aviso.imagem = Image.Text(texto, 0.62, 0.70, 0.78);
+    aviso.sprite = Sprite(aviso.imagem);
+    aviso.sprite.SetPosition(x0 + largura / 2 - aviso.imagem.GetWidth() / 2, y0 + altura - 60, 3);
+}
+Plymouth.SetMessageFunction(mensagem);

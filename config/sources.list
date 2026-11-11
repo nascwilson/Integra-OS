@@ -1,0 +1,4 @@
+deb @ESPELHO@ @SERIE@ main restricted universe multiverse
+deb @ESPELHO@ @SERIE@-updates main restricted universe multiverse
+deb @ESPELHO@ @SERIE@-backports main restricted universe multiverse
+deb http://security.ubuntu.com/ubuntu @SERIE@-security main restricted universe multiverse

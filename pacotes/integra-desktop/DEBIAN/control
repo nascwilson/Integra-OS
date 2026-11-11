@@ -1,0 +1,9 @@
+Package: integra-desktop
+Maintainer: Projeto iNTEGRA <integra@localhost>
+Version: @VERSAO@
+Architecture: all
+Priority: optional
+Section: metapackages
+Depends: integra-marca (= @VERSAO@), integra-central (= @VERSAO@), integra-windows (= @VERSAO@), integra-restauracao (= @VERSAO@), integra-google-drive (= @VERSAO@), integra-logos, zapzap
+Description: iNTEGRA OS: todos os componentes
+ Metapacote que instala a camada iNTEGRA completa.

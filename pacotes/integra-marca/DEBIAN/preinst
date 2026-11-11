@@ -1,0 +1,16 @@
+#!/bin/sh
+set -e
+# O iNTEGRA assume a identificação do sistema. A cópia do Ubuntu fica em
+# os-release.ubuntu e o desvio faz o base-files gravar lá nas próximas
+# atualizações; assim o nome "Ubuntu" não volta à tela "Sobre".
+# Copia em vez de mover: o arquivo nunca fica ausente (é de pacote essencial).
+if [ "$1" = "install" ] || [ "$1" = "upgrade" ]; then
+    if ! dpkg-divert --list /usr/lib/os-release | grep -q integra-marca; then
+        if [ -e /usr/lib/os-release ]; then
+            cp -a /usr/lib/os-release /usr/lib/os-release.ubuntu
+        fi
+        dpkg-divert --package integra-marca --add --no-rename \
+            --divert /usr/lib/os-release.ubuntu /usr/lib/os-release >/dev/null
+    fi
+fi
+exit 0

@@ -1,0 +1,6 @@
+[Default Applications]
+application/x-ms-dos-executable=integra-windows.desktop
+application/x-msdownload=integra-windows.desktop
+application/vnd.microsoft.portable-executable=integra-windows.desktop
+application/x-msi=integra-windows.desktop
+application/x-ms-installer=integra-windows.desktop

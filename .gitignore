@@ -1,0 +1,6 @@
+# Saídas da construção (ficam em /srv/integra-build)
+*.iso
+*.iso.sha256
+*.deb
+saida/
+chroot/

@@ -1,0 +1,3 @@
+// iNTEGRA OS: cria um ponto de restauração (Timeshift) antes de instalar ou
+// atualizar pacotes. Nunca bloqueia a atualização. Veja /usr/lib/integra/ponto-de-restauracao
+DPkg::Pre-Invoke { "if [ -x /usr/lib/integra/ponto-de-restauracao ]; then /usr/lib/integra/ponto-de-restauracao || true; fi"; };

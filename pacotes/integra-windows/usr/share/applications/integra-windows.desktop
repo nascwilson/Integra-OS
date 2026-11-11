@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Programa do Windows
+Comment=Instala ou executa programas do Windows (.exe e .msi) em ambiente próprio
+Exec=integra-windows %f
+Icon=application-x-ms-dos-executable
+Terminal=false
+NoDisplay=true
+MimeType=application/x-ms-dos-executable;application/x-msdownload;application/vnd.microsoft.portable-executable;application/x-msi;application/x-ms-installer;

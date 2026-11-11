@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="60" viewBox="0 0 40 60">
+<g id="decoration-topleft"><path d="M0 6 A6 6 0 0 1 6 0 L6 6 Z" fill="#24405C"/><path d="M1 6 A5 5 0 0 1 6 1 L6 6 Z" fill="#0B1726"/></g>
+<g id="decoration-top"><rect x="10" y="0" width="8" height="1" fill="#24405C"/><rect x="10" y="1" width="8" height="5" fill="#0B1726"/></g>
+<g id="decoration-topright"><path d="M20 0 A6 6 0 0 1 26 6 L20 6 Z" fill="#24405C"/><path d="M20 1 A5 5 0 0 1 25 6 L20 6 Z" fill="#0B1726"/></g>
+<g id="decoration-left"><rect x="0" y="10" width="1" height="8" fill="#24405C"/><rect x="1" y="10" width="5" height="8" fill="#0B1726"/></g>
+<g id="decoration-center"><rect x="10" y="10" width="8" height="8" fill="#0B1726"/></g>
+<g id="decoration-right"><rect x="20" y="10" width="5" height="8" fill="#0B1726"/><rect x="25" y="10" width="1" height="8" fill="#24405C"/></g>
+<g id="decoration-bottomleft"><rect x="0" y="20" width="6" height="1" fill="#24405C"/></g>
+<g id="decoration-bottom"><rect x="10" y="20" width="8" height="1" fill="#24405C"/></g>
+<g id="decoration-bottomright"><rect x="20" y="20" width="6" height="1" fill="#24405C"/></g>
+<g id="decoration-inactive-topleft"><path d="M0 36 A6 6 0 0 1 6 30 L6 36 Z" fill="#1B2F45"/><path d="M1 36 A5 5 0 0 1 6 31 L6 36 Z" fill="#0D1A2B"/></g>
+<g id="decoration-inactive-top"><rect x="10" y="30" width="8" height="1" fill="#1B2F45"/><rect x="10" y="31" width="8" height="5" fill="#0D1A2B"/></g>
+<g id="decoration-inactive-topright"><path d="M20 30 A6 6 0 0 1 26 36 L20 36 Z" fill="#1B2F45"/><path d="M20 31 A5 5 0 0 1 25 36 L20 36 Z" fill="#0D1A2B"/></g>
+<g id="decoration-inactive-left"><rect x="0" y="40" width="1" height="8" fill="#1B2F45"/><rect x="1" y="40" width="5" height="8" fill="#0D1A2B"/></g>
+<g id="decoration-inactive-center"><rect x="10" y="40" width="8" height="8" fill="#0D1A2B"/></g>
+<g id="decoration-inactive-right"><rect x="20" y="40" width="5" height="8" fill="#0D1A2B"/><rect x="25" y="40" width="1" height="8" fill="#1B2F45"/></g>
+<g id="decoration-inactive-bottomleft"><rect x="0" y="50" width="6" height="1" fill="#1B2F45"/></g>
+<g id="decoration-inactive-bottom"><rect x="10" y="50" width="8" height="1" fill="#1B2F45"/></g>
+<g id="decoration-inactive-bottomright"><rect x="20" y="50" width="6" height="1" fill="#1B2F45"/></g>
+</svg>

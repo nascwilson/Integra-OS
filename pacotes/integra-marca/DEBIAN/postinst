@@ -1,0 +1,18 @@
+#!/bin/sh
+set -e
+if [ "$1" = "configure" ]; then
+    update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth \
+        /usr/share/plymouth/themes/integra/integra.plymouth 300
+    update-alternatives --set default.plymouth /usr/share/plymouth/themes/integra/integra.plymouth || true
+    if command -v gtk-update-icon-cache >/dev/null; then gtk-update-icon-cache -qf /usr/share/icons/hicolor || true; fi
+    # perfis do AppArmor dos navegadores na sessão de teste (pendrive)
+    systemctl enable integra-sessao-de-teste-apparmor.service >/dev/null 2>&1 || true
+    # mensagens de login sem links do Ubuntu; statoverride sobrevive a
+    # atualizações do base-files (um chmod simples seria desfeito)
+    for f in /etc/update-motd.d/10-help-text /etc/update-motd.d/50-motd-news; do
+        if [ -e "$f" ] && ! dpkg-statoverride --list "$f" >/dev/null 2>&1; then
+            dpkg-statoverride --update --add root root 0644 "$f" || true
+        fi
+    done
+fi
+exit 0

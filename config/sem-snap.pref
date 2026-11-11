@@ -1,0 +1,4 @@
+# O iNTEGRA OS não usa Snap: os aplicativos vêm em .deb ou Flatpak.
+Package: snapd
+Pin: release a=*
+Pin-Priority: -10

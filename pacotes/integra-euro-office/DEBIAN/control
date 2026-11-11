@@ -1,0 +1,10 @@
+Package: integra-euro-office
+Maintainer: Projeto iNTEGRA <integra@localhost>
+Version: @VERSAO@
+Architecture: all
+Priority: optional
+Section: editors
+Depends: euro-office-euro-office
+Replaces: integra-marca (<< 0.6~)
+Description: Ajustes do iNTEGRA para o Euro-Office
+ Abre o Euro-Office pela XWayland e em português (pt-BR) para contas novas.

@@ -1,0 +1,3 @@
+#!/bin/sh
+# Instala ou executa um programa do Windows (.exe/.msi) com aviso de compatibilidade.
+exec python3 /usr/lib/integra/instalador/instalador.py "$@"
